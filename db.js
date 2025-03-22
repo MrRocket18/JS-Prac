@@ -1,7 +1,4 @@
 const mysql = require('mysql2/promise');
-const session = require('express-session')
-const exphbs = require('express-handlebars')
-const MySQLStore = require('express-mysql-session')
 
 let sets = {
     host: 'platon.teyhd.ru',
