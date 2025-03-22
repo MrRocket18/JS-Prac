@@ -22,11 +22,11 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/create', async (req,res) => {
-  const todo = await createTodo(req.body.content)
+  await createTodo(req.body.content)
   res.redirect('/')
 })
 router.post('/complete',async(req,res) =>{
-  const todo = await updateTableRowById(req.body.id,!!req.body.completed)
+  await updateTableRowById(req.body.id,!!req.body.completed)
   res.redirect('/')
 })
 module.exports = router //экспорт наружу
