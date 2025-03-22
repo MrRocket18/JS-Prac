@@ -1,11 +1,13 @@
 const mysql = require('mysql2/promise');
-const pool = require('../index')
+const pool = require('../db')
 async function createTodo(content) {
   try {
     const [result] = await pool.execute(
-      'INSERT INTO todos (content) VALUES (50)',
+      'INSERT INTO todos (content) VALUES (?)',
       [content]
     );
+    console.log('SQL Query:', 'INSERT INTO todos (content) VALUES (?)');
+    console.log('Values:', [content]);
     return { id: result.insertId, content: content, status: false }; 
   } catch (error) {
     console.error('Ошибка при создании todo:', error);

@@ -7,18 +7,18 @@ const todoRoutes = require('./routes/todos')
 
 const PORT = process.env.PORT || 3000
 
-let sets = {
+/*let sets = {
     host: 'platon.teyhd.ru',
     user: 'student',
     password: 'studpass',
     database: 'prutskov_todo',
     port: '3407',
     charset: 'utf8mb4_general_ci',
-  };
+  };*/
 const app = express();
-const pool = mysql.createPool(sets);
+//const pool = mysql.createPool(sets);
 
-module.exports = pool;
+//module.exports = pool;
 
 const hbs = exphbs.create({
     defaultLayout: 'main',
@@ -35,11 +35,9 @@ app.use(todoRoutes)
 
 async function start() {
     try {
-        const connection = await pool.getConnection();
-        const [rows] = await pool.execute('SELECT * FROM todos');
+        /*const connection = await pool.getConnection();
         console.log('Успешное подключение к БД');
-        console.log(rows);
-        connection.release();
+        connection.release();*/
         app.listen(PORT, () => {
             console.log('Server has been started...')
         })

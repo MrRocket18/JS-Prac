@@ -22,10 +22,7 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/create', async (req,res) => {
-  const todo = createTodo({
-    content: req.body.title
-  })
-  await todo.save()
+  const todo = createTodo(req.body.content)
   res.redirect('/')
 })
 
