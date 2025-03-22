@@ -16,6 +16,7 @@ async function start() {
     try {
         const connection = await pool.getConnection();
         console.log('Успешное подключение к БД');
+        connection.release();
     } catch (e) {
         console.error('Ошибка подключения к БД:', e)
     }
