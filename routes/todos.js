@@ -26,7 +26,9 @@ router.post('/create', async (req,res) => {
   res.redirect('/')
 })
 router.post('/complete',async(req,res) =>{
-  await updateTableRowById(req.body.id,!!req.body.completed)
-  res.redirect('/')
+  const status = req.body.completed === "true" ? 1 : 0;
+  let ID = req.body.id;
+  console.log("Получен POST запрос /complete:", "ID:", ID, "Status:", status);
+  await updateTableRowById(ID,status);
 })
 module.exports = router //экспорт наружу
